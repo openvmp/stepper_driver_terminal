@@ -10,15 +10,15 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-include_directories(
-  include
-)
-
 # Dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
 # Logic shared by all targets
+include_directories(
+  include
+)
+
 set(project_SOURCE_FILES
   src/main.cpp
   src/node.cpp
