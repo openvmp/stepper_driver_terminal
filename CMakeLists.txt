@@ -13,6 +13,7 @@ endif()
 # Dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(stepper_driver REQUIRED)
 
 # Logic shared by all targets
 include_directories(
@@ -23,18 +24,29 @@ set(project_SOURCE_FILES
   src/main.cpp
   src/node.cpp
 )
+
+set(project_LIBRARIES
+  ${rclcpp_LIBRARIES}
+  ${modbus_LIBRARIES}
+  ${modbus_rtu_LIBRARIES}
+  ${modbus_rtu_native_LIBRARIES}
+  ${stepper_driver_LIBRARIES}
+  ${stepper_driver_native_LIBRARIES}
+)
+
 set(project_DEPENDENCIES
   rclcpp
+  stepper_driver
 )
 
 
 # Executable target
 add_executable(${PROJECT_NAME} ${project_SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME} ${rclcpp_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${project_LIBRARIES})
 ament_target_dependencies(${PROJECT_NAME} ${project_DEPENDENCIES})
 install(TARGETS
   ${PROJECT_NAME}
-  DESTINATION lib/${PROJECT_NAME}
+  DESTINATION bin/
 )
 
 if(BUILD_TESTING)
