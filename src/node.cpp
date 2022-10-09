@@ -17,6 +17,8 @@ Node::Node() : rclcpp::Node::Node("stepper_driver_terminal") {
 
   // TODO(clairbee): enumerate services here and print an error
   //                  or instantiate the UI
+  // TODO(clairbee): clone this into a modbus terminal, use get_metadata for
+  //                 configured registers
 }
 
 }  // namespace stepper_driver_terminal
