@@ -12,7 +12,7 @@
 namespace stepper_driver_terminal {
 
 Node::Node() : rclcpp::Node::Node("stepper_driver_terminal") {
-  this->declare_parameter("prefix", "/stepper_driver/");
+  this->declare_parameter("prefix", "/stepper/");
   this->get_parameter("prefix", prefix_);
 
   // TODO(clairbee): enumerate services here and print an error
